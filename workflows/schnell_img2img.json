@@ -1,0 +1,19 @@
+{
+  "_doc": "flux-schnell img2img z reference (Apache-2.0). Se 4 kroky jde denoise jen skokově (0.85+ = plné přemalování); jemně s 12 kroky.",
+  "_params": {
+    "prompt": [["14", "text"]], "image": [["30", "image"]], "seed": [["18", "seed"]],
+    "steps": [["18", "steps"]], "denoise": [["18", "denoise"]], "batch": [["33", "amount"]]
+  },
+  "10": {"class_type": "UNETLoader", "inputs": {"unet_name": "flux1-schnell.safetensors", "weight_dtype": "fp8_e4m3fn"}},
+  "11": {"class_type": "DualCLIPLoader", "inputs": {"clip_name1": "t5xxl_fp16.safetensors", "clip_name2": "clip_l.safetensors", "type": "flux"}},
+  "12": {"class_type": "VAELoader", "inputs": {"vae_name": "ae.safetensors"}},
+  "14": {"class_type": "CLIPTextEncode", "inputs": {"text": "", "clip": ["11", 0]}},
+  "15": {"class_type": "CLIPTextEncode", "inputs": {"text": "", "clip": ["11", 0]}},
+  "30": {"class_type": "LoadImage", "inputs": {"image": ""}},
+  "31": {"class_type": "ImageScaleToTotalPixels", "inputs": {"image": ["30", 0], "upscale_method": "lanczos", "megapixels": 1.0, "resolution_steps": 16}},
+  "32": {"class_type": "VAEEncode", "inputs": {"pixels": ["31", 0], "vae": ["12", 0]}},
+  "33": {"class_type": "RepeatLatentBatch", "inputs": {"amount": 2, "samples": ["32", 0]}},
+  "18": {"class_type": "KSampler", "inputs": {"seed": 0, "steps": 4, "cfg": 1.0, "sampler_name": "euler", "scheduler": "simple", "denoise": 0.75, "model": ["10", 0], "positive": ["14", 0], "negative": ["15", 0], "latent_image": ["33", 0]}},
+  "19": {"class_type": "VAEDecode", "inputs": {"samples": ["18", 0], "vae": ["12", 0]}},
+  "20": {"class_type": "SaveImage", "inputs": {"filename_prefix": "memeshorts/schnell_i2i", "images": ["19", 0]}}
+}

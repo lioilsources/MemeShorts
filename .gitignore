@@ -1,0 +1,10 @@
+.env
+bin/
+data/
+jobs/
+assets/sfx/*.wav
+drafts/
+.DS_Store
+assets/music/*
+!assets/music/.keep
+.claude/

@@ -1,0 +1,125 @@
+# Slovník emocí knihovny postav (Prompts/01-GRAPHICS_PLAN.md §2.1) a styl obou linií.
+#
+# Linie S  (flux-schnell NIM, seed předlohy, pixar-3d): prompt = style.pixar + postava + flux[i] + framing.
+#          Varianty vznikají obměnou formulace (flux[]), ne seedem — jiný seed = jiná postava (G0).
+# Linie B2 (Animagine + IP-Adapter Plus): prompt = tags.quality + postava.tags + tags + tags.framing.
+# motion: popis pohybu pro Wan i2v z neutrální předlohy (G3).
+
+style:
+  pixar: "3D animated film still, stylized character with big expressive eyes, soft studio lighting, smooth shading"
+  framing: "Waist-up portrait of %s, facing the viewer, with %s. Single character, centered, plain flat light gray studio background."
+  neutral: "a calm neutral expression, arms relaxed at the sides"
+  tags_quality: "masterpiece, best quality, amazing quality, anime coloring, flat color"
+  tags_framing: "upper body, looking at viewer, simple background, grey background"
+  tags_neutral: "expressionless, arms at sides"
+  tags_negative: "lowres, bad anatomy, bad hands, extra digits, worst quality, low quality, jpeg artifacts, blurry, watermark, signature, text, multiple views, multiple boys, multiple girls, 3d, realistic"
+
+emotions:
+  neutral:
+    flux:
+      - "a calm neutral expression, looking straight at the viewer, arms relaxed at the sides"
+      - "a relaxed, attentive face with a closed mouth, shoulders level, hands resting at the sides"
+    tags: "expressionless, closed mouth, arms at sides"
+    motion: "breathes gently, blinks once and keeps looking at the camera"
+  smug:
+    flux:
+      - "a smug self-satisfied smirk, one eyebrow raised, chin lifted, arms crossed over the chest"
+      - "a cocky lopsided grin, eyes half-lidded with confidence, head tilted back slightly, arms folded"
+      - "a knowing smirk and a raised eyebrow, leaning back a little with arms crossed, pleased with themselves"
+    tags: "smug, smirk, raised eyebrow, crossed arms, half-closed eyes"
+    motion: "a smug smirk slowly spreads across the face, one eyebrow rises and the chin lifts"
+  pleased:
+    flux:
+      - "a bright happy smile with eyes crinkled, giving a thumbs up"
+      - "a delighted grin, cheeks raised, both hands held up in a small cheer"
+      - "a warm satisfied smile, eyes closed in contentment, one hand giving a thumbs up"
+    tags: "happy, grin, smile, closed eyes, thumbs up"
+    motion: "breaks into a wide happy smile and raises a thumbs up"
+  disgusted:
+    flux:
+      - "a disgusted grimace, nose scrunched and upper lip curled, leaning away with one palm pushed out in refusal"
+      - "a revolted face, eyes narrowed and mouth pulled down at the corners, recoiling backwards with hands raised"
+      - "a look of disgust, nose wrinkled, tongue slightly out as if tasting something awful, waving one hand away"
+    tags: "disgust, grimace, wavy mouth, nose wrinkle, leaning back, hand up"
+    motion: "recoils slightly, scrunches the nose in disgust and pushes one palm out in refusal"
+  shocked:
+    flux:
+      - "a shocked face, eyes wide open, mouth open in a gasp, both hands on the cheeks"
+      - "a stunned expression, eyebrows raised high, jaw dropped, hands flying up beside the face"
+      - "wide-eyed astonishment, pupils small, mouth agape, one hand clutching the chest"
+    tags: "surprised, shocked, wide-eyed, open mouth, hands on own cheeks"
+    motion: "the eyes go wide and the mouth drops open in shock as both hands come up to the cheeks"
+  confused:
+    flux:
+      - "a confused expression, one eyebrow up and one down, mouth twisted to the side, scratching the back of the head"
+      - "a puzzled face, squinting slightly, lips pursed, both palms turned up in a shrug"
+      - "a baffled look, eyebrows knitted, head tilted, one finger on the chin"
+    tags: "confused, raised eyebrow, head tilt, shrug, hand on own head"
+    motion: "tilts the head, squints in confusion and scratches the back of the head"
+  angry:
+    flux:
+      - "an angry face, eyebrows slammed down, teeth clenched, fists raised in front of the chest"
+      - "a furious glare, jaw tight, pointing an accusing finger straight at the viewer"
+      - "a red-faced angry expression, veins on the temple, both fists clenched at the sides"
+    tags: "angry, furrowed brow, clenched teeth, clenched hands, pointing at viewer"
+    motion: "the brows slam down, the teeth clench and a finger points sharply at the camera"
+  nervous:
+    flux:
+      - "a nervous face, sweat drop on the temple, strained awkward smile, tugging at the collar"
+      - "an anxious expression, eyes darting to the side, biting the lower lip, hands wringing together"
+      - "a worried, sweating face with a forced grin, both hands raised defensively"
+    tags: "nervous, sweatdrop, nervous smile, averted eyes, hand on own collar"
+    motion: "a nervous sweat drop forms, the smile strains and a hand tugs at the collar"
+  exhausted:
+    flux:
+      - "an exhausted face, half-closed eyes with dark circles, slumped shoulders, head tilted to one side"
+      - "a drained, sleepy expression, eyelids drooping, mouth slightly open in a sigh, shoulders sagging"
+      - "a tired dead-eyed stare, hair slightly messier than usual, one hand rubbing the eye"
+    tags: "tired, exhausted, half-closed eyes, bags under eyes, slouching, head tilt"
+    motion: "the shoulders slump, the eyelids droop and the head sinks with a long tired sigh"
+  scheming:
+    flux:
+      - "a scheming grin, eyes narrowed, fingertips pressed together in front of the chest"
+      - "a sly mischievous smile, one eyebrow arched, rubbing the hands together"
+      - "a devious look, eyes glinting, hiding a grin behind steepled fingers"
+    tags: "evil smile, narrowed eyes, steepled fingers, scheming"
+    motion: "the eyes narrow, a sly grin appears and the fingertips press together"
+  proud:
+    flux:
+      - "a proud confident expression, chin up, chest out, fists on the hips"
+      - "a triumphant grin, one fist raised in victory, eyes shining"
+      - "a confident smile with a slight nod, standing tall with one hand on the chest"
+    tags: "proud, confident, smile, hands on hips, chin up"
+    motion: "the chin lifts, the chest puffs out and both fists land on the hips in triumph"
+  deadpan:
+    flux:
+      - "a flat deadpan stare, eyelids half lowered, mouth a straight line, arms hanging limp"
+      - "an unimpressed blank expression, one eyebrow barely raised, looking at the viewer without emotion"
+      - "a bored, unamused face, eyes half closed, head resting on one hand"
+    tags: "expressionless, jitome, half-closed eyes, unamused, head rest"
+    motion: "stares flatly at the camera, blinks once slowly and does nothing else"
+
+# 33 emocí ze šablon → 12 knihovních.
+aliases:
+  calm: neutral
+  plain: neutral
+  businesslike: neutral
+  naive: neutral
+  dull: neutral
+  confident: proud
+  strong: proud
+  enlightened: proud
+  transcendent: proud
+  fancy: smug
+  mocking: smug
+  sneaky: scheming
+  menacing: scheming
+  flirty: smug
+  distracted: confused
+  horrified: shocked
+  panicked: nervous
+  stubborn: angry
+  furious: angry
+  reckless: pleased
+  weak: exhausted
+  unimpressed: deadpan

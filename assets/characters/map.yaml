@@ -1,0 +1,54 @@
+# Mapování rolí šablon (A–D z classify) na vlastní postavy.
+# Otevřená otázka plánu §5.1: zatím 4 „meme" archetypy; až bude rozhodnuto,
+# doplnit `ref` (referenční obrázek pro IP-Adapter/face-avatar) a doladit prompty.
+#
+# prompt = identita postavy pro flux (linie S, pixar-3d), tags = booru popis pro Animagine (linie B2).
+# seed = seed vybrané pixar předlohy — všechny emoce linie S ho musí sdílet (G0). Doplní `library approve`.
+# Styl a slovník emocí: emotions.yaml.
+
+style: "anime illustration, clean lineart, flat cel shading, vibrant colors, simple soft background, upper body, centered, expressive face"
+
+characters:
+  kiro:
+    name: Kiro
+    archetype: smug
+    prompt: "a young man with messy spiky black hair, sharp dark eyes and a small scar on his left eyebrow, wearing a red zip-up hoodie over a white t-shirt"
+    tags: "1boy, solo, male focus, messy hair, spiked hair, black hair, black eyes, scar on eyebrow, red hoodie, open hoodie, white shirt"
+    seed: 44
+    ref: ""          # assets/characters/kiro/master_pixar.png po schválení
+    color: "#e63946" # barva placeholderu a jmenovky
+  mei:
+    name: Mei
+    archetype: confused
+    prompt: "a young woman with a short teal bob haircut, big round glasses and an oversized mustard-yellow knit sweater"
+    tags: "1girl, solo, teal hair, bob cut, short hair, round eyewear, glasses, yellow sweater, oversized clothes, sweater"
+    seed: 0
+    ref: ""
+    color: "#2a9d8f"
+  taro:
+    name: Taro
+    archetype: hyped
+    prompt: "an energetic teenage boy with spiky bright orange hair, a white headband and a green track jacket with white stripes"
+    tags: "1boy, solo, male focus, orange hair, spiked hair, headband, white headband, green jacket, track jacket"
+    seed: 0
+    ref: ""
+    color: "#f4a261"
+  yuki:
+    name: Yuki
+    archetype: deadpan
+    prompt: "a calm young woman with long straight white hair, a lavender-purple cardigan over a black top, and sleepy half-closed eyes"
+    tags: "1girl, solo, white hair, long hair, straight hair, purple cardigan, cardigan, black shirt, half-closed eyes, sleepy"
+    seed: 0
+    ref: ""
+    color: "#8e7dbe"
+
+# Výchozí obsazení rolí, když šablona nemá vlastní.
+default_cast: {A: kiro, B: mei, C: taro, D: yuki}
+
+# Obsazení konkrétních šablon (role → postava).
+templates:
+  "imgflip:181913649": {A: kiro}                 # Drake
+  "imgflip:112126428": {A: kiro, B: mei, C: yuki} # Distracted Boyfriend
+  "imgflip:188390779": {A: mei, B: yuki}          # Woman Yelling at Cat
+  "imgflip:438680":    {A: taro, B: kiro}         # Batman slapping Robin
+  "imgflip:247375501": {A: taro, B: mei}          # Buff Doge vs Cheems
