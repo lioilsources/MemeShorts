@@ -7,4 +7,17 @@ drafts/
 .DS_Store
 assets/music/*
 !assets/music/.keep
-.claude/
+.claude/*
+!.claude/settings.json
+# devconv:start
+.env.*
+!.env.example
+*.p8
+*.p12
+*.jks
+key.properties
+.claude/settings.local.json
+CLAUDE.local.md
+*.test
+*.out
+# devconv:end
