@@ -36,7 +36,7 @@ open drafts/library/sheet.html              # kontaktní arch pro výběr
 Dvě linie: `pixar` (flux-schnell NIM, prompt + seed předlohy; jede 07–13 i 19–01) a `anime`
 (Animagine XL + IP-Adapter Plus, jen ComfyUI 07–13). Slovník emocí a aliasy: `assets/characters/emotions.yaml`.
 `run` pak bere obrázky z knihovny (`--gen library`, `--line pixar|anime`); bez schválené knihovny
-spadne na placeholdery. SPARK se volá přímo v LAN (`192.168.88.66`), mimo okna klient nic neposílá.
+spadne na placeholdery. SPARK se volá přímo v LAN (adresa jen v `.env`, viz `.env.example`), mimo okna klient nic neposílá.
 
 ## Roura
 

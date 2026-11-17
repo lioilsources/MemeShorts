@@ -11,8 +11,8 @@ Možnosti SPARKu jsou domluvené se session **Director**; zdroje: AiStack `docs/
 
 | Fakt (Director) | Důsledek pro MemeShorts |
 |---|---|
-| **flux-schnell NIM** (gen-queue `192.168.88.66:8091`) běží 07–13 a 19–01, ~3–6 s/obrázek, Apache-2.0 | jediný backend dostupný večer a jediný licenčně čistý → denní dávka musí stát na něm |
-| **ComfyUI** (`192.168.88.66:8188`) jen 07–13 a primárně pro experimenty uživatele | vše, co potřebuje referenci (img2img, Kontext, IP-Adapter, RMBG, video), je vzácný zdroj → dělat jednorázově, ne denně |
+| **flux-schnell NIM** (gen-queue `<spark-host>:8091`) běží 07–13 a 19–01, ~3–6 s/obrázek, Apache-2.0 | jediný backend dostupný večer a jediný licenčně čistý → denní dávka musí stát na něm |
+| **ComfyUI** (`<spark-host>:8188`) jen 07–13 a primárně pro experimenty uživatele | vše, co potřebuje referenci (img2img, Kontext, IP-Adapter, RMBG, video), je vzácný zdroj → dělat jednorázově, ne denně |
 | flux-kontext NIM a image-api **nejsou nasazené** | Kontext jen přes ComfyUI; plán §3.4 („IP-Adapter / face-avatar pipeline") v původní podobě neplatí |
 | Prompt + seed postavu **nedrží** (0–35 % nad branou DINO 0,80); img2img / Kontext z reference ano (85–100 %) | dnešní `generate` (flux-schnell txt2img se seedem per postava) dá v každé scéně jinou postavu → nepoužitelné pro stálé obsazení |
 | Wan 2.2 ti2v 5B: ~25 min / 121 snímků, bez checkpointu; 10–30 klipů denně se do okna **nevejde** | recept `i2v` per short (plán §3.5, M2) v plánovaném objemu nejde |
@@ -140,7 +140,7 @@ uživatelovo → termín určí uživatel.
 
 ### Úpravy stávajícího kódu (součást G2, drobnosti hned)
 - `generate/genqueue.go`: výsledek je JPEG, klient dnes vyžaduje PNG → dekódovat a uložit jako PNG.
-- `config`: default `GEN_QUEUE_URL=http://192.168.88.66:8091/nim`, CF Access jen volitelně.
+- `config`: default `GEN_QUEUE_URL=http://<spark-host>:8091/nim`, CF Access jen volitelně.
 - `generate`: nový `ComfyClient` (`POST /prompt`, `/history`, `/view`, `/upload/image`; vzor storyteller
   `internal/comfy`) — používá ho jen stavba knihovny, ne denní roura.
 - `classify`: emoce jako enum 12 hodnot + `setting`; `templates.go` přemapovat.
